@@ -1,0 +1,41 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    command: bash -c "rm -f tmp/pids/server.pid && rails s"
+    environment:
+      DB_HOST: postgres
+    volumes:
+      - .:/adv_map
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:11.1
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.docker/postgres:/var/lib/postgresql/data
+    env_file: .env
+
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./.docker/redis:/data
+
+  sidekiq:
+    depends_on:
+      - postgres
+      - redis
+    build: .
+    command: sidekiq -C config/sidekiq.yml.erb
+    volumes:
+      - .:/adv_map
+    env_file:
+      - .env
