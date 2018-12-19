@@ -8,8 +8,8 @@ class IslandTilesAggregator
   def perform
     return [] if land_tiles.blank?
 
-    x_length ||= land_tiles.max_by { |k| k[:x] }[:x]
-    y_length ||= land_tiles.max_by { |k| k[:y] }[:y]
+    x_length = land_tiles.max_by { |k| k[:x] }[:x]
+    y_length = land_tiles.max_by { |k| k[:y] }[:y]
 
     islands = []
 
@@ -17,11 +17,7 @@ class IslandTilesAggregator
       (1..x_length).each do |x|
         next if get_tile(x, y).blank?
 
-        island = []
-
-        aggregate_island_tiles(x, y, island)
-
-        islands << island
+        islands << aggregate_island_tiles(x, y, [])
       end
     end
 
@@ -44,6 +40,8 @@ class IslandTilesAggregator
     aggregate_island_tiles(x, y + 1, island)
     aggregate_island_tiles(x - 1, y, island)
     aggregate_island_tiles(x, y - 1, island)
+
+    island
   end
 
   def get_tile(x, y)

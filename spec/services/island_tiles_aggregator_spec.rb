@@ -124,17 +124,17 @@ RSpec.describe IslandTilesAggregator do
 
   context 'when map matrix is 5x5 and contains 1 island' do
     # 0 0 0 0 0
-    # 0 1 0 0 1
+    # 0 1 0 1 1
     # 0 1 0 0 1
     # 0 1 1 1 1
-    # 0 0 0 0 0,
-
+    # 0 0 0 0 0
     let(:land_tiles) do
       [
         { x: 2, y: 2, type: 'land' },
         { x: 2, y: 3, type: 'land' },
         { x: 2, y: 4, type: 'land' },
         { x: 3, y: 4, type: 'land' },
+        { x: 4, y: 2, type: 'land' },
         { x: 4, y: 4, type: 'land' },
         { x: 5, y: 2, type: 'land' },
         { x: 5, y: 3, type: 'land' },
@@ -153,7 +153,8 @@ RSpec.describe IslandTilesAggregator do
             { x: 4, y: 4, type: 'land' },
             { x: 5, y: 4, type: 'land' },
             { x: 5, y: 3, type: 'land' },
-            { x: 5, y: 2, type: 'land' }
+            { x: 5, y: 2, type: 'land' },
+            { x: 4, y: 2, type: 'land' }
           ]
         ]
       )
