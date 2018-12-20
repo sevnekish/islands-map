@@ -23,10 +23,6 @@
 /.docker/*
 !/.docker/.keep
 
-# Ignore docker composer configuration files
-/docker-compose.yml
-/docker-compose.services.yml
-
 # Ignore test coverage
 /coverage
 

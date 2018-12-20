@@ -9,9 +9,7 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 gem 'pg', '>= 0.18', '< 2.0'
 
-# Background processing
-gem 'sidekiq', '~> 5.1.3'
-gem 'sidekiq-status'
+gem 'active_model_serializers'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -37,4 +35,6 @@ group :test do
   gem 'rspec-its'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
+  gem 'vcr'
+  gem 'webmock'
 end
