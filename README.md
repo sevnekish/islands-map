@@ -1,24 +1,33 @@
-# README
+## Project setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### System dependencies
 
-Things you may want to cover:
+* postgresql 11.1
 
-* Ruby version
+### Configuration
+* Rename and fill with real data .env.tt to .env
+* create empty .env if you do not need any additional configuration
 
-* System dependencies
+## Getting Started
 
-* Configuration
+1. Stop postgres services to have free ports and run
 
-* Database creation
+2. Run docker
+```ShellSession
+$ docker-compose up
+```
+There are containers for postgresql, rails server
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Of course, if you prefer system programs - you can use them.
+You can use only some services with docker. Just run
+```ShellSession
+$ docker-compose up service1 service2
+```
+i.e.
+```ShellSession
+$ docker-compose up postgres
+```
+3. Create db and run migration in web container
+```ShellSession
+$ docker exec <web container name> rake db:create db:migrate
+```
