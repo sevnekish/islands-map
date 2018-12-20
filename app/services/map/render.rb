@@ -1,5 +1,9 @@
 class Map::Render
   def self.call(map)
+    return if map.blank?
+    return if map.tiles.empty?
+
+    # TODO: get max x y by one sql request or store cached size of the map in the map table
     x_length = map.tiles.maximum(:x)
     y_length = map.tiles.maximum(:y)
 
