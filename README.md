@@ -10,9 +10,9 @@
 
 ## Getting Started
 
-1. Stop postgres services to have free ports and run
+1\. Stop postgres services to have free ports and run
 
-2. Run docker
+2\. Run docker
 ```ShellSession
 $ docker-compose up
 ```
@@ -27,7 +27,7 @@ i.e.
 ```ShellSession
 $ docker-compose up postgres
 ```
-3. Create db and run migration in web container
+3\. Create db and run migrations in web container
 ```ShellSession
 $ docker exec <web container name> rake db:create db:migrate
 ```
